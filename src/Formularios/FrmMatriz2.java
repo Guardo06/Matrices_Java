@@ -4,6 +4,7 @@
  */
 package Formularios;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -59,7 +60,7 @@ public class FrmMatriz2 extends javax.swing.JFrame {
         panelMatriz = new javax.swing.JPanel();
         btnImprimir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtResultado = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,10 +76,15 @@ public class FrmMatriz2 extends javax.swing.JFrame {
         );
 
         btnImprimir.setText("IMPRIMIR DIAGONALES");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtResultado.setColumns(20);
+        txtResultado.setRows(5);
+        jScrollPane1.setViewportView(txtResultado);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,6 +116,18 @@ public class FrmMatriz2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        
+       String diagonalPrincipal = "";
+       String diagonalSegundaria = "";
+       
+       for (int i = 0; i < tamaño; i++){
+           diagonalPrincipal += campos[i][i].getText() +"";
+           diagonalSegundaria += campos[i][tamaño - 1 - i].getText() +"";
+       }
+      txtResultado.setText("DiagonalPrincipal: " + diagonalPrincipal + "\n" + "DiagonalSegundaria: " + diagonalSegundaria );
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,7 +168,7 @@ public class FrmMatriz2 extends javax.swing.JFrame {
     private javax.swing.JButton btnImprimir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JPanel panelMatriz;
+    private javax.swing.JTextArea txtResultado;
     // End of variables declaration//GEN-END:variables
 }
